@@ -2,7 +2,7 @@ package com.alex.spring;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Dog implements Pet{
     public Dog() {
         System.out.println("создалась собака");
