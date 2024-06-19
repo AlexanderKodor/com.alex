@@ -7,7 +7,7 @@ public class Test4 {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext2.xml");
 
         Pet pet = context.getBean("myPet", Pet.class);
-//        pet.say();
+        pet.say();
 //        Pet pet2 = context.getBean("myPet", Pet.class);
 //        System.out.println(pet.equals(pet2));
 
