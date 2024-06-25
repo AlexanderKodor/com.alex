@@ -1,6 +1,5 @@
-package hibernate_test2.entity;
+package hibernate_one_to_many_bi.entity.entity.entity;
 
-import hibernate.entity.Detail;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,21 +13,18 @@ public class Employee {
     private String name;
     @Column(name = "surname")
     private String surname;
-    @Column(name = "department")
-    private String department;
     @Column(name = "salary")
     private int salary;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "details_id")
-    private Detail empDetail;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
+    private Department department;
 
     public Employee() {
     }
 
-    public Employee(String name, String surname, String department, int salary) {
+    public Employee(String name, String surname, int salary) {
         this.name = name;
         this.surname = surname;
-        this.department = department;
         this.salary = salary;
     }
 
@@ -56,14 +52,6 @@ public class Employee {
         this.surname = surname;
     }
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
-    }
-
     public int getSalary() {
         return salary;
     }
@@ -72,23 +60,21 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", department='" + department + '\'' +
                 ", salary=" + salary +
-                ", detail=" + empDetail +
                 '}';
-    }
-
-    public Detail getEmpDetail() {
-        return empDetail;
-    }
-
-    public void setEmpDetail(Detail detail) {
-        this.empDetail = detail;
     }
 }

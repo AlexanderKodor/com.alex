@@ -1,12 +1,12 @@
-package hibernate_test2;
+package hibernate_one_to_one;
 
-import hibernate.entity.Detail;
-import hibernate_test2.entity.Employee;
+import hibernate_one_to_one.entity.Detail;
+import hibernate_one_to_one.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class Test1 {
+public class Test2 {
     public static void main(String[] args) {
         SessionFactory sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
@@ -17,19 +17,29 @@ public class Test1 {
         Session session = sessionFactory.getCurrentSession();
 
         try {
-//            Employee emp = new Employee("Oleg", "Smirnov", "Sales", 1000);
-//            Detail detail = new Detail("Mockow", "7734555599", "oleg@gmail.com");
-//            emp.setDetail(detail);
+//            Employee emp = new Employee("Niko", "Ivanov", "IT", 1100);
+//            Detail detail = new Detail("Omsk", "353451199", "misha@gmail.com");
+//            emp.setEmpDetail(detail);
+//            detail.setEmployee(emp);
 //            session.beginTransaction();
-//            session.persist(emp);
+//            session.persist(detail);
 //            session.getTransaction().commit();
 //            System.out.println("Запись произведена: " + emp);
 
 
+//            session.beginTransaction();
+//            Detail detail = session.get(Detail.class,4);
+//            System.out.println(detail.getEmployee());
+//
+//            session.getTransaction().commit();
+//            System.out.println("Done");
+
+
             session.beginTransaction();
-            Employee employee = session.get(Employee.class, 2);
-            System.out.println(employee.getEmpDetail());
-            session.remove(employee);
+            Detail detail = session.get(Detail.class,6);
+            System.out.println(detail.getEmployee());
+            detail.getEmployee().setEmpDetail(null);
+            session.remove(detail);
 
             session.getTransaction().commit();
             System.out.println("Done");
