@@ -1,9 +1,9 @@
-package hibernate_one_to_many_bi.entity.entity.entity;
+package hibernate_one_to_many_uni.entity;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "employees2")
+@Table(name = "employees3")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,9 +15,6 @@ public class Employee {
     private String surname;
     @Column(name = "salary")
     private int salary;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "department_id")
-    private Department department;
 
     public Employee() {
     }
@@ -60,13 +57,6 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
 
     @Override
     public String toString() {

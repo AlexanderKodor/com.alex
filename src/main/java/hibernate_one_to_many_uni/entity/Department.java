@@ -1,4 +1,4 @@
-package hibernate_one_to_many_bi.entity.entity.entity;
+package hibernate_one_to_many_uni.entity;
 
 import jakarta.persistence.*;
 
@@ -15,16 +15,17 @@ public class Department {
     @Column(name = "name")
     private String departnemtName;
     @Column(name = "max_salary")
-    private String maxSalary;
+    private int maxSalary;
     @Column(name = "min_salary")
-    private String minSalary;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
+    private int minSalary;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
     private List<Employee> employeeList;
 
     public Department() {
     }
 
-    public Department(String departnemtName, String maxSalary, String minSalary) {
+    public Department(String departnemtName, int maxSalary, int minSalary) {
         this.departnemtName = departnemtName;
         this.maxSalary = maxSalary;
         this.minSalary = minSalary;
@@ -46,19 +47,19 @@ public class Department {
         this.departnemtName = departnemtName;
     }
 
-    public String getMaxSalary() {
+    public int getMaxSalary() {
         return maxSalary;
     }
 
-    public void setMaxSalary(String maxSalary) {
+    public void setMaxSalary(int maxSalary) {
         this.maxSalary = maxSalary;
     }
 
-    public String getMinSalary() {
+    public int getMinSalary() {
         return minSalary;
     }
 
-    public void setMinSalary(String minSalary) {
+    public void setMinSalary(int minSalary) {
         this.minSalary = minSalary;
     }
 
@@ -84,6 +85,5 @@ public class Department {
             employeeList = new ArrayList<>();
         }
         employeeList.add(employee);
-        employee.setDepartment(this);
     }
 }
